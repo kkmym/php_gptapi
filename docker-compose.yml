@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:1.25.1
+    ports:
+      - 8080:80
+    volumes:
+      - ./php/src:/var/www/src
+      - ./docker/nginx/:/etc/nginx/conf.d
+    depends_on:
+      - php
+  php:
+    environment:
+      - OPENAI_API_KEY=$ENV_OPENAI_API_KEY
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    volumes:
+      - ./php/src:/var/www/src
+      - ./php/temp:/var/www/temp

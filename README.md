@@ -30,3 +30,6 @@ ENV_OPENAI_API_KEY=sk-xxxx・・・
 docker-compose up -d --build
 docker-compose exec php bash
 ```
+
+立ち上がったらローカルサーバにアクセス
+http://localhost:8080/sse.html
